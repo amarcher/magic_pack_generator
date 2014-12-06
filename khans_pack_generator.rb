@@ -23,12 +23,18 @@ class Set
 end
 
 class Card
-	attr_reader :rarity, :name, :image_url
+	attr_reader :rarity, :name, :image_url, :foil
 
-	def initialize(rarity, name, image)
+	def initialize(rarity, name, image, foil=false)
 		@rarity = rarity
 		@name = name
 		@image_url = URI.escape('http://mtgimage.com/card/' + image + '.jpg')
+		@foil = foil
+	end
+
+	def make_foil
+		@foil = true
+		return self
 	end
 
 end
@@ -40,10 +46,16 @@ class Pack
 	def initialize(set)
 		commons = set.sample(10, 'Common')
 		uncommons = set.sample(3, 'Uncommon')
+		
 		if contains_mythic
 			rare = set.sample(1, 'Mythic Rare')
 		else
 			rare = set.sample(1, 'Rare')
+		end
+
+		if contains_foil
+			commons.pop
+			commons.push(set.cards.sample.make_foil)
 		end
 
 		@cards = commons + uncommons + rare
@@ -53,7 +65,9 @@ class Pack
 		puts "-"*50
 
 		@cards.each do |card|
-			puts card.rarity[0] + " - " + card.name + " ---> " + card.image_url
+			print card.rarity[0] + " - " 
+			print "**FOIL** " if card.foil
+			puts card.name + " ---> " + card.image_url
 		end
 
 		puts "-"*50
@@ -62,6 +76,10 @@ class Pack
 	private
 
 	def contains_mythic
+		return rand(8) == 0
+	end
+
+	def contains_foil
 		return rand(8) == 0
 	end
 
