@@ -1,4 +1,5 @@
 require 'json'
+require 'uri'
 
 def read_file(file_name)
 	file = File.open(file_name, "r")
@@ -12,7 +13,7 @@ class Set
 
 	def initialize(file)
 		data = JSON.parse(read_file(file))
-		@cards = data['cards'].map { |card| Card.new(card['rarity'], card['name']) }
+		@cards = data['cards'].map { |card| Card.new(card['rarity'], card['name'], card['imageName']) }
 	end
 
 	def sample(number, rarity)
@@ -22,11 +23,12 @@ class Set
 end
 
 class Card
-	attr_reader :rarity, :name
+	attr_reader :rarity, :name, :image_url
 
-	def initialize(rarity, name)
+	def initialize(rarity, name, image)
 		@rarity = rarity
 		@name = name
+		@image_url = URI.escape('http://mtgimage.com/card/' + image + '.jpg')
 	end
 
 end
@@ -51,7 +53,7 @@ class Pack
 		puts "-"*50
 
 		@cards.each do |card|
-			puts card.name
+			puts card.rarity[0] + " - " + card.name + " ---> " + card.image_url
 		end
 
 		puts "-"*50
