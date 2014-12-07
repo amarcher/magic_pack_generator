@@ -2,7 +2,9 @@
 	<%= render 'controls' %>
 	<% @pool.packs.each do |pack| %>
 		<% pack.cards.each do |card| %>
-			<img src='<%= card.image_url %>' class='card col span_1' />
+			<div class='card col span_1 <%= " foil" if (card.foil) %>'>
+				<img src='<%= card.image_url %>' class='' />
+			</div>
 		<% end %>
 	<% end %>
 </div>
