@@ -3,6 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .card {
-	width: 14.2857143%;
-	float: left;
+	border-radius: 10px;
+	/* width: 14.2857143%;
+	 * float: left; */
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 5px;
 }
+
+.pool, .build {
+	
+}
+

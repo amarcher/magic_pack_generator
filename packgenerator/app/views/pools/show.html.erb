@@ -1,5 +1,14 @@
+<div class='row pool'>
 <% @pool.packs.each do |pack| %>
 	<% pack.cards.each do |card| %>
-		<img src='<%= card.image_url %>' class='card' />
+		<img src='<%= card.image_url %>' class='card col span_1' />
 	<% end %>
 <% end %>
+</div>
+
+<div class='row build' id='build_1'>
+	<div class='col span_9 main_deck' id='main_1'>
+	</div>
+	<div class='col span_3 sideboard' id='side_1'>
+	</div>
+</div>
