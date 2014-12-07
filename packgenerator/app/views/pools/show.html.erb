@@ -1,0 +1,5 @@
+<% @pool.packs.each do |pack| %>
+	<% pack.cards.each do |card| %>
+		<img src='<%= card.image_url %>' class='card' />
+	<% end %>
+<% end %>
