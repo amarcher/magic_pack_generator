@@ -13,5 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree ../../../vendor/assets/javascripts/.
+//= require ../../../vendor/assets/javascripts/jquery.gridster.with-extras
 //= require_tree .
