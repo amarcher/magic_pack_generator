@@ -47,13 +47,13 @@ class Pack
 		commons = set.sample(10, 'Common')
 		uncommons = set.sample(3, 'Uncommon')
 		
-		if contains_mythic
+		if contains_mythic?
 			rare = set.sample(1, 'Mythic Rare')
 		else
 			rare = set.sample(1, 'Rare')
 		end
 
-		if contains_foil
+		if contains_foil?
 			commons.pop
 			commons.push(set.cards.sample.make_foil)
 		end
@@ -75,11 +75,11 @@ class Pack
 
 	private
 
-	def contains_mythic
+	def contains_mythic?
 		return rand(8) == 0
 	end
 
-	def contains_foil
+	def contains_foil?
 		return rand(8) == 0
 	end
 
