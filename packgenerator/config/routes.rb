@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :pools
+
+  resources :pools do
+    resources :builds
+  end
 
   root 'pools#new'
 

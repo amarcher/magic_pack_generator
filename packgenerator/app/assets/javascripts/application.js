@@ -12,6 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require ../../../vendor/assets/javascripts/jquery-ui
+//= require ../../../vendor/assets/javascripts/jquery.collision
+//= require ../../../vendor/assets/javascripts/jquery.coords
+//= require ../../../vendor/assets/javascripts/jquery.draggable
+//= require ../../../vendor/assets/javascripts/utils
 //= require turbolinks
-//= require ../../../vendor/assets/javascripts/jquery.gridster.with-extras
+//= require ../../../vendor/assets/javascripts/jquery.gridster
+//= require ../../../vendor/assets/javascripts/jquery.gridster.extras
 //= require_tree .

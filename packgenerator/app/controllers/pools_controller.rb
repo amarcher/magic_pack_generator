@@ -16,6 +16,28 @@ class PoolsController < ApplicationController
 
 	def show
 		@pool = Pool.find(params[:id])
+		respond_to do |format|
+			format.json { render json: @pool }
+			format.html { }
+		end
+	end
+
+	# TODO refactor into the builds controller
+	def edit
+		@pool = Pool.find(params[:id])
+		respond_to do |format|
+			format.json { render json: @pool }
+			format.html { }
+		end
+	end
+
+	# TODO refactor into the builds controller
+	def update
+		@pool = Pool.find(params[:id])
+		respond_to do |format|
+			format.json { render json: @pool }
+			format.html { }
+		end
 	end
 
 	private

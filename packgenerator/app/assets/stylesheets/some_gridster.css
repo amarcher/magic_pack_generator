@@ -1,0 +1,26 @@
+[data-row="16"] { z-index: 16; }
+[data-row="15"] { z-index: 15; }
+[data-row="14"] { z-index: 14; }
+[data-row="13"] { z-index: 13; }
+[data-row="12"] { z-index: 12; }
+[data-row="11"] { z-index: 11; }
+[data-row="10"] { z-index: 10; }
+[data-row="9"] { z-index: 9; }
+[data-row="8"] { z-index: 8; }
+[data-row="7"] { z-index: 7; }
+[data-row="6"] { z-index: 6; }
+[data-row="5"] { z-index: 5; }
+[data-row="4"] { z-index: 4; }
+[data-row="3"] { z-index: 3; }
+[data-row="2"] { z-index: 2; }
+[data-row="1"] { z-index: 1; }
+
+.gridster, .gridster ul {
+	width: 100%;
+	margin: 0;
+}
+.gridster ul li {
+	list-style-type: none;
+	background-color: red;
+	margin: 2px;
+}
