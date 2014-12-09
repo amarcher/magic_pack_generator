@@ -11,7 +11,7 @@ class PoolsController < ApplicationController
 		@pool = Pool.new
 		@pool.packs = packs
 		@pool.save!
-		redirect_to @pool
+		redirect_to edit_pool_path(@pool)
 	end
 
 	def show
