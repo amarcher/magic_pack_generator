@@ -1,4 +1,4 @@
-var gridster, ready, cardsInPool, getCardsInPool, drawCardsInPool, htmlForCard;
+var source, template, gridster, ready, cardsInPool, getCardsInPool, drawCardsInPool, htmlForCard;
 
 getCardsInPool = function(cb) {
 	$.ajax({
@@ -14,18 +14,18 @@ getCardsInPool = function(cb) {
 };
 
 htmlForCard = function(card) {
-	var string = "<div class='card col span_1 ";
-	if (card.foil) {
-		string += " foil";
-	}
-	string += '\' data-id=\'' + card.id.$oid + '\'';
-	string += 'data-color="' + card.color + '"';
-	string += 'data-rarity="' + card.rarity + '"';
-	string += 'data-cmc="' + card.cmc + '"';
-	string += 'data-pack="' + card.pack + '"';
-	string += '><img src="' + card.image_url + '"';
-	string += '" /></div>';
-	return string;
+	// var string = "<li class='card col span_1 ";
+	// if (card.foil) {
+	// 	string += " foil";
+	// }
+	// string += '\' data-id=\'' + card.id.$oid + '\'';
+	// string += 'data-color="' + card.color + '"';
+	// string += 'data-rarity="' + card.rarity + '"';
+	// string += 'data-cmc="' + card.cmc + '"';
+	// string += 'data-pack="' + card.pack + '"';
+	// string += '><img src="' + card.image_url + '"';
+	// string += '" /></li>';
+	var context = card;
 };	
 
 drawCardsInPool = function(cardsData) {
@@ -48,7 +48,7 @@ var sortBy = function(attribute) {
 			counts[value[attribute]] = 1;
 		}
 		gridster.add_widget(
-			htmlForCard(value),
+			template(value),
 			1,
 			1,
 			value[attribute],
@@ -65,6 +65,8 @@ var setEventListeners = function() {
 };
 
 ready = function(){
+	source   = $("#card_template").html();
+	template = Handlebars.compile(source);
 	setEventListeners();
 	getCardsInPool(drawCardsInPool);
 };

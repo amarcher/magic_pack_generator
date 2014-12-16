@@ -17,3 +17,9 @@
 		</div>
 	</div>
 </div>
+
+<script id="card_template" type="text/x-handlebars-template">
+	<li class='card col span_1 {{#if this.foil}}foil{{/if}}' data-id={{this.id.$oid}} data-color={{this.color}} data-rarity={{this.rarity}} data-cmc={{this.cmc}} data-pack={{this.pack}}>
+		<img src={{this.image_url}} class='' />
+	</li>
+</script>
