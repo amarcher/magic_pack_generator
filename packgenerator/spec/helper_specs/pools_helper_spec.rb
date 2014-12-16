@@ -27,19 +27,19 @@ RSpec.describe PoolsHelper, :type => :helper do
 
   describe "#int_color" do
     it "returns an integer representing a land card's color" do
-      expect(helper.int_color(@land_card)).to eq 7
+      expect(PoolsHelper.int_color(@land_card)).to eq 7
     end
     it "returns an integer representing an artifact card's color" do
-      expect(helper.int_color(@artifact_card)).to eq 7
+      expect(PoolsHelper.int_color(@artifact_card)).to eq 7
     end
     it "returns an integer representing an multi_colored card's color" do
-      expect(helper.int_color(@muli_colored_card)).to eq 6
+      expect(PoolsHelper.int_color(@muli_colored_card)).to eq 6
     end
   end
 
   describe "#int_rarity" do
     it "returns an integer representing a land card's rarity" do
-      expect(helper.int_rarity(@land_card)).to eq 4
+      expect(PoolsHelper.int_rarity(@land_card)).to eq 4
     end
   end
 
@@ -59,8 +59,7 @@ RSpec.describe PoolsHelper, :type => :helper do
       end
       @pool.packs = @packs
       @pool.save!
-      p @pool.packs
-      expect(helper.jsonify(@pool.reload)).to eq 4
+      expect(PoolsHelper.jsonify(@pool.reload)[0]).to be_a(PoolsHelper::JSON_Card)
     end
   end
 end
