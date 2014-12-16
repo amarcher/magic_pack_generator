@@ -37,7 +37,7 @@ class Pack
   end
 
   def contains_foil?
-  	return rand(8) == 0
+  	return rand(6) == 0
   end
 
 end
