@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require ../../../vendor/assets/javascripts/handlebars-v2.0.0
 //= require ../../../vendor/assets/javascripts/jquery-ui
 //= require ../../../vendor/assets/javascripts/jquery.collision
 //= require ../../../vendor/assets/javascripts/jquery.coords

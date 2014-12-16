@@ -1,4 +1,4 @@
-var gridster, ready, cardsInPool, getCardsInPool, drawCardsInPool, htmlForCard;
+var source, template, gridster, ready, cardsInPool, getCardsInPool, drawCardsInPool;
 
 getCardsInPool = function(cb) {
 	$.ajax({
@@ -12,21 +12,6 @@ getCardsInPool = function(cb) {
 		console.log(error);
 	});
 };
-
-htmlForCard = function(card) {
-	var string = "<div class='card col span_1 ";
-	if (card.foil) {
-		string += " foil";
-	}
-	string += '\' data-id=\'' + card.id.$oid + '\'';
-	string += 'data-color="' + card.color + '"';
-	string += 'data-rarity="' + card.rarity + '"';
-	string += 'data-cmc="' + card.cmc + '"';
-	string += 'data-pack="' + card.pack + '"';
-	string += '><img src="' + card.image_url + '"';
-	string += '" /></div>';
-	return string;
-};	
 
 drawCardsInPool = function(cardsData) {
 	gridster = $(".gridster ul").gridster({
@@ -48,7 +33,7 @@ var sortBy = function(attribute) {
 			counts[value[attribute]] = 1;
 		}
 		gridster.add_widget(
-			htmlForCard(value),
+			template(value),
 			1,
 			1,
 			value[attribute],
@@ -65,6 +50,8 @@ var setEventListeners = function() {
 };
 
 ready = function(){
+	source   = $("#card_template").html();
+	template = Handlebars.compile(source);
 	setEventListeners();
 	getCardsInPool(drawCardsInPool);
 };
