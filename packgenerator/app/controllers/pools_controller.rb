@@ -26,7 +26,7 @@ class PoolsController < ApplicationController
 	def edit
 		@pool = Pool.find(params[:id])
 		respond_to do |format|
-			format.json { render json: @pool }
+			format.json { render json: PoolsHelper.jsonify(@pool) }
 			format.html { }
 		end
 	end
