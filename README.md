@@ -13,10 +13,10 @@ Open a pool of MTG cards. Sort them into a build. Share it with others. See what
 As a user...
  - I can generate a pool of N packs and see pictures of all the cards in the pool
  	- TODO: Add & wire up form to select number of packs in pool 
- - I can sort the pool by rarity, pack, color, and converted mana cost
-  	- TODO: Add mana cost to the card attributes
-  	- TODO: Sort by color
-  	- TODO: Sort by CMC
+ - <del>I can sort the pool by rarity, pack, color, and converted mana cost</del>
+  	- <del>TODO: Add mana cost to the card attributes</del>
+  	- <del>TODO: Sort by color</del>
+  	- <del>TODO: Sort by CMC</del>
  - I can zoom in on a card
   	- TODO: Tie right click mousedown event to add zoom class / remove it
   	- TODO: CSS for zoom class scale(2x)
