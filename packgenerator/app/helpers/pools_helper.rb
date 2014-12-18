@@ -58,9 +58,9 @@ module PoolsHelper
 		json_cards = []
 
 		pool.packs.each.with_index do |pack, index|
-			pack.cards.each do |card|
+			pack.cards.each.with_index do |card, i|
 				json_card = JSON_Card.new({
-						id: card.id,
+						id: 'pack_' + (index + 1).to_s + '_card_' + (i + 1).to_s,
 						image_url: card.image_url,
 						name: card.name,
 						cmc: int_cmc(card),

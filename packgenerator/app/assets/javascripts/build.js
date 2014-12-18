@@ -16,24 +16,28 @@ getCardsInPool = function(cb) {
 drawCardsInPool = function(cardsData) {
 
 	decks = $(".main_deck, .sideboard");
+
+	decks.find('ul').sortable({
+							connectWith: '.main_deck ul, .sideboard ul',
+							greedy: true
+						});
+
 	mainDeckOne = $(".main_deck ul");
 	
 	$.each(mainDeckOne, function(index, value) {
 		$(value).append(cardsAt(cardsInPool, index + 1, 'pack'));
 	});
 
-	$.each( decks, function(index, value) {
+	resizeDivs();
+
+};
+
+var resizeDivs = function() {
+	$.each(decks, function(index, value) {
 		var parent = $(value);
 		var ulHeight = parent.height() > 0 ? parent.height() : parent.parent().height();
-		console.log(ulHeight);
-		parent.find('ul')
-					.height(ulHeight)
-					.sortable({
-						connectWith: '.full_pool ul, .main_deck ul, .sideboard ul',
-						greedy: true
-					});
+		parent.find('ul').height(ulHeight);
 	});
-
 };
 
 var cardsAt = function(cardsInArea, number, attribute) {
@@ -52,7 +56,7 @@ var cardsFor = function(cardIds) {
 	cards = [];
 
 	$.each(cardsInPool, function(index, value) {
-		if ( cardIds.indexOf(value.id.$oid) > -1 ) {
+		if ( cardIds.indexOf(value.id) > -1 ) {
 			cards.push(value);
 		}
 	});
@@ -78,7 +82,6 @@ var sortBy = function(attribute) {
 		$.each(uls, function(i, v) {
 			$(v).html( cardsAt(cardsInDeck, i + 1, attribute) );
 		});
-
 	});
 };
 
