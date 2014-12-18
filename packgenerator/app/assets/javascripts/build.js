@@ -1,4 +1,4 @@
-var source, template, pool_gridster, decks_gridster, ready, cardsInPool, getCardsInPool, drawCardsInPool;
+var source, template, decks, mainDeckOne, ready, cardsInPool, getCardsInPool, drawCardsInPool;
 
 getCardsInPool = function(cb) {
 	$.ajax({
@@ -15,11 +15,11 @@ getCardsInPool = function(cb) {
 
 drawCardsInPool = function(cardsData) {
 
-	var decks = $(".main_deck, .sideboard");
-	pool_gridster = $(".main_deck ul");
+	decks = $(".main_deck, .sideboard");
+	mainDeckOne = $(".main_deck ul");
 	
-	$.each(pool_gridster, function(index, value) {
-		$(value).append(cardsAt(index + 1, 'pack'));
+	$.each(mainDeckOne, function(index, value) {
+		$(value).append(cardsAt(cardsInPool, index + 1, 'pack'));
 	});
 
 	$.each( decks, function(index, value) {
@@ -30,18 +30,16 @@ drawCardsInPool = function(cardsData) {
 					.height(ulHeight)
 					.sortable({
 						connectWith: '.full_pool ul, .main_deck ul, .sideboard ul',
-						receive: function( event, ui ) {
-							console.log(event, ui);
-						}
+						greedy: true
 					});
 	});
 
 };
 
-var cardsAt = function(number, attribute) {
+var cardsAt = function(cardsInArea, number, attribute) {
 	var html = '';
 
-	$.each(cardsInPool, function(index, value) {
+	$.each(cardsInArea, function(index, value) {
 		if (value[attribute] == number) {
 			html += template(value);
 		}
@@ -50,9 +48,37 @@ var cardsAt = function(number, attribute) {
   return html;
 };
 
+var cardsFor = function(cardIds) {
+	cards = [];
+
+	$.each(cardsInPool, function(index, value) {
+		if ( cardIds.indexOf(value.id.$oid) > -1 ) {
+			cards.push(value);
+		}
+	});
+
+	return cards;
+};
+
 var sortBy = function(attribute) {
-	$.each(pool_gridster, function(index, value) {
-		$(value).html(cardsAt(index + 1, attribute));
+	var cardIdsInDeck, cardsInDeck, uls;
+
+	$.each(decks, function(index, value) {
+		cardIdsInDeck = [];
+
+		uls = $(value).find('ul');
+
+		$.each(uls, function(i, v) {
+			cardIdsInDeck.push.apply( cardIdsInDeck, $(v).sortable("toArray") );
+		});
+
+		cardsInDeck = cardsFor(cardIdsInDeck);
+		console.log(cardsInDeck);
+
+		$.each(uls, function(i, v) {
+			$(v).html( cardsAt(cardsInDeck, i + 1, attribute) );
+		});
+
 	});
 };
 
