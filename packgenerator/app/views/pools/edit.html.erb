@@ -1,11 +1,14 @@
-<div class='row deck' id='deck_1'>
-	<%= render 'controls' %>
-	<div class='row'>
-		<div class='col span_12 main_deck' id='main_1'>
-			<% 12.times do %><ul class='col span_1'></ul><% end %>
-		</div>
-		<div class='col span_12 sideboard' id='side_1'>
-			<% 12.times do %><ul class='col span_1'></ul><% end %>
+<%= render 'controls' %>
+
+<div class='decks'>
+	<div class='row deck' id='deck_1'>	
+		<div class='row'>
+			<div class='col span_12 main_deck' id='main_1'>
+				<% 12.times do %><ul class='col span_1'></ul><% end %>
+			</div>
+			<div class='col span_12 sideboard' id='side_1'>
+				<% 12.times do %><ul class='col span_1'></ul><% end %>
+			</div>
 		</div>
 	</div>
 </div>

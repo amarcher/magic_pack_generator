@@ -12,7 +12,6 @@
  *
  *= require_self
  *= require ../../../vendor/assets/stylesheets/jquery-ui
- *= require ../../../vendor/assets/stylesheets/jquery.gridster
  *= require ../../../vendor/assets/stylesheets/main
  *= require_tree .
  */

@@ -5,7 +5,7 @@ class PoolsController < ApplicationController
 	end
 
 	def create
-		packs = Array.new(6) do
+		packs = Array.new(12) do
 			Pack.create(setname_params)
 		end
 		@pool = Pool.new

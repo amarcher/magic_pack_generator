@@ -2,11 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.controls {
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	z-index: 1001;
+	height: 30px;
+}
+
 .card {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	position: relative;
+	height: 30px;
 	img {
 		padding: 5px;
 		width: 100%;
@@ -14,27 +23,31 @@
 	}
 }
 
-.pool, .build {
+.decks {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-	padding: 5px;
-	background-color: rgb(186, 191, 185);
+	width: 100%;
 	min-height: 400px;
-	border: 2px black solid;
-	margin: 3px;
-	border-radius: 10px;
+	height: 100%;
+	margin: 30px 3px;
 }
 
 .main_deck, .sideboard {
+	background-color: rgb(186, 191, 185);
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 	height: inherit;
 	border: 2px black solid;
 	border-radius: 10px;
 	border: 2px black solid;
 	margin-top: 3px;
 	z-index: -100px;
+	overflow: scroll;
 	ul {
-		height: inherit;
+		min-height: 400px;
+		height: 600px;
 		list-style-type: none;
 		padding: 0px;
 	}
@@ -49,9 +62,9 @@
 	position: absolute;
 	top: 5%;
 	left: 5%;
-	height: 90%;
+	height: 300%;
 	width: 90%;
-	z-index: 10;
+	overflow: visible;
 	border-radius: 5px;
 	background: linear-gradient(135deg, rgba(255,255,255,0.33) 0%,rgba(255,255,255,0.33) 60%,rgba(255,255,255,0) 61%,rgba(255,255,255,0) 100%);
 }

@@ -3,7 +3,8 @@ var source, template, decks, mainDeckOne, ready, cardsInPool, getCardsInPool, dr
 getCardsInPool = function(cb) {
 	$.ajax({
 		url: window.location,
-		type: 'get'
+		type: 'get',
+		cache: false
 	}).done(function(result){
 		cardsInPool = result;
 		console.log(cardsInPool);
@@ -15,12 +16,17 @@ getCardsInPool = function(cb) {
 
 drawCardsInPool = function(cardsData) {
 
-	decks = $(".main_deck, .sideboard");
+	decks = $(".main_deck, .sideboard").resizable({
+      maxHeight: 1000,
+      maxWidth: '100%',
+      minHeight: 100,
+      minWidth: '100%'
+    });
 
 	decks.find('ul').sortable({
 							connectWith: '.main_deck ul, .sideboard ul',
 							greedy: true
-						});
+						}).disableSelection();
 
 	mainDeckOne = $(".main_deck ul");
 	
@@ -28,16 +34,6 @@ drawCardsInPool = function(cardsData) {
 		$(value).append(cardsAt(cardsInPool, index + 1, 'pack'));
 	});
 
-	resizeDivs();
-
-};
-
-var resizeDivs = function() {
-	$.each(decks, function(index, value) {
-		var parent = $(value);
-		var ulHeight = parent.height() > 0 ? parent.height() : parent.parent().height();
-		parent.find('ul').height(ulHeight);
-	});
 };
 
 var cardsAt = function(cardsInArea, number, attribute) {
@@ -77,7 +73,6 @@ var sortBy = function(attribute) {
 		});
 
 		cardsInDeck = cardsFor(cardIdsInDeck);
-		console.log(cardsInDeck);
 
 		$.each(uls, function(i, v) {
 			$(v).html( cardsAt(cardsInDeck, i + 1, attribute) );

@@ -18,7 +18,6 @@
 //= require ../../../vendor/assets/javascripts/jquery.coords
 //= require ../../../vendor/assets/javascripts/jquery.draggable
 //= require ../../../vendor/assets/javascripts/utils
+//= require ../../../vendor/assets/javascripts/waitForImages
 //= require turbolinks
-//= require ../../../vendor/assets/javascripts/jquery.gridster
-//= require ../../../vendor/assets/javascripts/jquery.gridster.extras
 //= require_tree .
