@@ -26,6 +26,20 @@
 	border-radius: 10px;
 }
 
+.main_deck, .sideboard {
+	height: inherit;
+	border: 2px black solid;
+	border-radius: 10px;
+	border: 2px black solid;
+	margin-top: 3px;
+	z-index: -100px;
+	ul {
+		height: inherit;
+		list-style-type: none;
+		padding: 0px;
+	}
+}
+
 .foil:after {
 	content: "";
 	-moz-box-sizing: border-box;
@@ -40,5 +54,29 @@
 	z-index: 10;
 	border-radius: 5px;
 	background: linear-gradient(135deg, rgba(255,255,255,0.33) 0%,rgba(255,255,255,0.33) 60%,rgba(255,255,255,0) 61%,rgba(255,255,255,0) 100%);
+}
+
+.full_pool {
+	background-image:url("data:image/svg+xml;utf8,
+	  <svg xmlns='http://www.w3.org/2000/svg' version='1.1'
+	       height='50px' width='120px'>
+	    <text x='0' y='15' fill='grey' font-size='20'>Pool</text>
+	  </svg>");
+}
+
+.main_deck {
+	background-image:url("data:image/svg+xml;utf8,
+	  <svg xmlns='http://www.w3.org/2000/svg' version='1.1'
+	       height='50px' width='120px'>
+	    <text x='0' y='15' fill='grey' font-size='20'>Main</text>
+	  </svg>");
+}
+
+.sideboard {
+	background-image:url("data:image/svg+xml;utf8,
+	  <svg xmlns='http://www.w3.org/2000/svg' version='1.1'
+	       height='50px' width='120px'>
+	    <text x='0' y='15' fill='grey' font-size='20'>Side</text>
+	  </svg>");
 }
 

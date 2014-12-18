@@ -1,25 +1,17 @@
-<div class='row pool'>
+<div class='row deck' id='deck_1'>
 	<%= render 'controls' %>
 	<div class='row'>
-		<div class='full_pool gridster span_12'>
-			<ul>
-	    </ul>
+		<div class='col span_12 main_deck' id='main_1'>
+			<% 12.times do %><ul class='col span_1'></ul><% end %>
 		</div>
-	</div>
-</div>
-
-<div class='row build' id='build_1'>
-	<%= render 'controls' %>
-	<div class='row'>
-		<div class='col span_9 main_deck gridster' id='main_1'>
-		</div>
-		<div class='col span_3 sideboard gridster' id='side_1'>
+		<div class='col span_12 sideboard' id='side_1'>
+			<% 12.times do %><ul class='col span_1'></ul><% end %>
 		</div>
 	</div>
 </div>
 
 <script id="card_template" type="text/x-handlebars-template">
-	<li class='card col span_1 {{#if this.foil}}foil{{/if}}' data-id={{this.id.$oid}} data-color={{this.color}} data-rarity={{this.rarity}} data-cmc={{this.cmc}} data-pack={{this.pack}}>
+	<li class='card {{#if this.foil}}foil{{/if}}' id={{this.id.$oid}} data-color={{this.color}} data-rarity={{this.rarity}} data-cmc={{this.cmc}} data-pack={{this.pack}}>
 		<img src={{this.image_url}} class='' />
 	</li>
 </script>
