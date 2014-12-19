@@ -30,7 +30,7 @@
 	width: 100%;
 	min-height: 400px;
 	height: 100%;
-	margin: 30px 3px;
+	margin: 25px 3px;
 }
 
 .main_deck, .sideboard {
@@ -44,12 +44,13 @@
 	border: 2px black solid;
 	margin-top: 3px;
 	z-index: -100px;
-	overflow: scroll;
+	overflow: visible;
 	ul {
 		min-height: 400px;
 		height: 600px;
 		list-style-type: none;
 		padding: 0px;
+		overflow: scroll;
 	}
 }
 
@@ -91,5 +92,11 @@
 	       height='50px' width='120px'>
 	    <text x='0' y='15' fill='grey' font-size='20'>Side</text>
 	  </svg>");
+}
+
+.card.big {
+	width: 220px;
+	z-index: 1002;
+	position: absolute;
 }
 

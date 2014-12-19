@@ -85,6 +85,28 @@ var setEventListeners = function() {
 	$('.sort-by-cost').on('click',function() { sortBy('cmc'); });
 	$('.sort-by-color').on('click',function() { sortBy('color'); });
 	$('.sort-by-rarity').on('click',function() { sortBy('rarity'); });
+	$(document).on('click', '.card', function() {
+    $(this).toggleClass("selected");
+	});
+	$(document).on('contextmenu', '.card', function() {
+    $(event.target).parent().toggleClass('big');
+    return false;
+	});
+	$(document).on('mousedown', '.card', function() {
+    console.log('hi', event.which, event.button);
+    if (event.which === 3 || event.button === 2) {
+  		event.preventDefault();
+  		console.log('hi');
+  		$(event.target).parent().css('width','220px').css('z-index','1002');
+  	}
+	});
+	$(document).on('mouseup', '.card', function() {
+    switch (event.which) {
+      case 3:
+	      event.preventDefault();
+    		$(event.target).parent().css('width','110px');
+    	}
+	});
 };
 
 ready = function(){
